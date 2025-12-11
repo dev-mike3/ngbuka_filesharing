@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
 
-/* ------------------ CONFIG ------------------ */
+
+
 const SUPABASE_URL = "https://maosnbctqmhpesyqrxua.supabase.co";
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1hb3NuYmN0cW1ocGVzeXFyeHVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM2Mzc4MDMsImV4cCI6MjA3OTIxMzgwM30.vP40pyA6_hoXuXS8EzhPpQbR7gTDh81FPAB29IpT-rg";
@@ -12,7 +13,10 @@ const CLOUDINARY_UPLOAD_PRESET = "unsigned";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-/* ------------------ Sidebar ------------------ */
+
+
+
+
 function Sidebar({ user }) {
   const [role, setRole] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +56,6 @@ function Sidebar({ user }) {
 
 
 
-      {/* Sidebar */}
       <div
         className={`
           fixed md:relative w-64  bg-[#1A1A7A] text-white p-4 flex flex-col justify-between
@@ -63,12 +66,12 @@ function Sidebar({ user }) {
         `}
       >
         <div>
-          {/* Hidden on mobile, shown on desktop */}
+
           <div className="mb-8 hidden md:block">
             <h2 className="text-xl font-bold text-white">Menu</h2>
           </div>
           <nav className="flex-1">
-            {/* File Management Section */}
+            
             <div className="mb-6">
             
               <ul className="space-y-2">
@@ -93,7 +96,7 @@ function Sidebar({ user }) {
               </ul>
             </div>
 
-            {/* External Links Section */}
+            
             <div>
               <p className="text-gray-400 text-sm mb-2">External Links</p>
               <ul className="space-y-2">
@@ -149,16 +152,16 @@ function Sidebar({ user }) {
   );
 }
 
-/* ------------------ Header ------------------ */
+
 function Header({ user, onSignOut }) {
   return (
     <header className="bg-[#FF8E05] h-[8vh] shadow-xl flex items-center px-4 md:px-6 w-full">
-      {/* Added margin-left on mobile to push logo right, removed on desktop */}
+      
       <Link to="/" className="ml-12 md:ml-0">
         <img src="/bluelogo.png" alt="Logo" className="h-10 w-auto cursor-pointer" />
       </Link>
       <div className="flex-1 flex justify-center">
-        {/* Hidden on mobile, shown on desktop */}
+        
         <div className="text-center font-bold italic text-blue-900 text-xl md:text-3xl break-words hidden md:block">
           Team File Sharing
         </div>
@@ -325,7 +328,7 @@ function UploadPage({ user }) {
   const inputRef = useRef();
   const navigate = useNavigate();
 
-  // Generate thumbnail for image/video
+  
   const generateThumbnail = (file) =>
     new Promise((resolve) => {
       const url = URL.createObjectURL(file);
@@ -405,7 +408,7 @@ function UploadPage({ user }) {
             ? {
                 file_name: selectedFiles[i].name,
                 file_url: url,
-                file_size: selectedFiles[i].size, // ⬅ save file size
+                file_size: selectedFiles[i].size, 
                 uploaded_by: user.id,
                 uploaded_by_email: user.email || null,
                 shared_with: [],
@@ -509,7 +512,7 @@ function UploadPage({ user }) {
 
 
 
-/* ------------------ Received Files Page ------------------ */
+
 
 const formatBytes = (bytes, decimals = 2) => {
   if (!bytes) return "0 Bytes";
@@ -733,7 +736,7 @@ function ReceivedFilesPage({ user }) {
         ))}
       </div>
 
-      {/* SIDEBAR */}
+
       {sidebarFile && (
         <div className="fixed inset-0 z-40">
           <div className="absolute inset-0 bg-black/10" onClick={() => setSidebarFile(null)}></div>
@@ -817,7 +820,7 @@ function ReceivedFilesPage({ user }) {
 
 
 
-/* ------------------ APP ------------------ */
+
 export default function App() {
   const [user, setUser] = useState(null);
 
@@ -867,6 +870,10 @@ export default function App() {
     </Router>
   );
 }
+
+
+
+
 
 
 
