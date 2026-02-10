@@ -509,11 +509,6 @@ function UploadPage({ user }) {
 }
 
 
-
-
-
-
-
 const formatBytes = (bytes, decimals = 2) => {
   if (!bytes) return "0 Bytes";
   const k = 1024;
@@ -522,6 +517,10 @@ const formatBytes = (bytes, decimals = 2) => {
   const i = Math.floor(Math.log(bytes) / Math.log(k));
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
 };
+
+
+
+
 
 
 function ReceivedFilesPage({ user }) {
@@ -818,12 +817,8 @@ function ReceivedFilesPage({ user }) {
 
 
 
-
-
-
 export default function App() {
-  const [user, setUser] = useState(null);
-
+const [user, setUser] = useState(null);
   useEffect(() => {
     let mounted = true;
     const getUser = async () => {
@@ -870,6 +865,11 @@ export default function App() {
     </Router>
   );
 }
+
+
+
+
+
 
 
 
